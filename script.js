@@ -27,19 +27,19 @@ let mainInfos = [
     `,
     `
        <div class='black-filter'></div>
-       <div class="record-freq">
+       <div class="song-freqrecord">
             <p class="ptt-font med-font">${songs[0]._freq} <span class="turquoise mgsv-font">${songs[0]._name}</span></p>
             <p class="ptt-font med-font"> ${songs[1]._freq} <span class="turquoise mgsv-font">${songs[1]._name}</span></p>
        </div>
-       <div class="record-freq">
+       <div class="song-freqrecord">
            <p class="ptt-font med-font">${songs[0]._freq} <span class="turquoise mgsv-font">${songs[0]._name}</span></p>
             <p class="ptt-font med-font"> ${songs[1]._freq} <span class="turquoise mgsv-font">${songs[1]._name}</span></p>
         </div>
-       <div class="record-freq">
+       <div class="song-freqrecord">
             <p class="ptt-font med-font">${songs[0]._freq} <span class="turquoise mgsv-font">${songs[0]._name}</span></p>
             <p class="ptt-font med-font"> ${songs[1]._freq} <span class="turquoise mgsv-font">${songs[1]._name}</span></p>
        </div>
-       <div class="record-freq">
+       <div class="song-freqrecord">
             <p class="ptt-font med-font">${songs[0]._freq} <span class="turquoise mgsv-font">${songs[0]._name}</span></p>
             <p class="ptt-font med-font"> ${songs[1]._freq} <span class="turquoise mgsv-font">${songs[1]._name}</span></p>
        </div>
