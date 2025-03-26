@@ -1,6 +1,12 @@
 import songs from "./config.js";
-const codecFrequency = document.querySelector("#codec-frequency");
 
+const codecFrequencyEl = document.querySelector("#codec-frequency");
+const changeFreqBtnsEl = {
+    dFreq: document.getElementById("decrease-freq-btn"),
+    iFreq: document.getElementById("increase-freq-btn")
+}
+const songInfoEl = document.getElementById("main-info");
+const songNavigateEl = document.querySelector("#main-infoscroll-btn");
 const SOUND_EFFECTS = [
     document.getElementById("soundeffect-open"),
     document.getElementById("soundeffect-codeccall"),
@@ -9,16 +15,7 @@ const SOUND_EFFECTS = [
     document.getElementById("soundeffect-itemused"),
 ];
 
-const mobileBtns = {
-    dFreq: document.getElementById("decrease-freq-btn"),
-    iFreq: document.getElementById("increase-freq-btn")
-}
-
-const mainInfoBox = document.getElementById("main-info");
-const mainInfoScroller = document.querySelector("#main-infoscroll-btn");
-
-let lastFrequency = 140.85;
-let mainInfos = [
+let info = [
     `
         <p class="mtp05"> <span class='codec-font accept-call'>NAME</span> <span class="mgsv-font med-font mlp05">Snake Eater</span></p>
         <p class="mtp075"> <span class='codec-font accept-call'>FREQ</span> <span class="small15-font codec-font mlp05">140.85</span></p>
@@ -47,21 +44,29 @@ let mainInfos = [
     `
     `,
 
-]
-let cMainInfo_LVL = 0;
+];
+let lastFrequency = 140.85;
+let infoLvl = 0;
+
+function changeFreq(input) {
+    SOUND_EFFECTS[3].play();
+    
+    if (input === '+') {
+        changeFreqBtnsEl.iFreq.style.color = "#479787"
+        lastFrequency = (Number(lastFrequency) - 0.01).toFixed(2);
+        codecFrequencyEl.textContent = (lastFrequency);
+    } else if (input === '-') {
+        changeFreqBtnsEl.dFreq.style.color = "#479787"
+        lastFrequency = (Number(lastFrequency) + 0.01).toFixed(2);
+        codecFrequencyEl.textContent = lastFrequency;
+    }
+}
 
 window.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft") {
-        //border-left: 0.6rem solid #2A6A5C; 
-        mobileBtns.dFreq.style.color = "#479787"
-        lastFrequency = (Number(lastFrequency) - 0.01).toFixed(2);
-        codecFrequency.textContent = (lastFrequency);
-        SOUND_EFFECTS[3].play();
+        changeFreq('-');
     } else if (e.key === "ArrowRight") {
-        mobileBtns.iFreq.style.color = "#479787"
-        lastFrequency = (Number(lastFrequency) + 0.01).toFixed(2);
-        codecFrequency.textContent = (lastFrequency);
-        SOUND_EFFECTS[3].play();
+        changeFreq('+');
     }
 
     if (e.key === "Enter") {
@@ -73,45 +78,36 @@ window.addEventListener("keydown", (e) => {
     }
 
 });
-
 window.addEventListener("keyup", (e) => {
-    mobileBtns.dFreq.style.color = "#2A6A5C";
-    mobileBtns.iFreq.style.color = "#2A6A5C";
+    changeFreqBtnsEl.dFreq.style.color = "#2A6A5C";
+    changeFreqBtnsEl.iFreq.style.color = "#2A6A5C";
 });
 
-mobileBtns.dFreq.onclick = () => {
-    mobileBtns.dFreq.style.color = "#479787"
+changeFreqBtnsEl.iFreq.addEventListener("click", () => {
+    changeFreq('+');
     window.setTimeout(() => {
-        mobileBtns.dFreq.style.color = "#2A6A5C";
+        changeFreqBtnsEl.iFreq.style.color = "#2A6A5C";
     }, 1000)
-    lastFrequency = (lastFrequency - 0.01).toFixed(2);
-    codecFrequency.textContent = (lastFrequency);
-    SOUND_EFFECTS[3].play();
+})
+changeFreqBtnsEl.dFreq.onclick = () => {
+    changeFreq('-');
+    window.setTimeout(() => {
+        changeFreqBtnsEl.dFreq.style.color = "#2A6A5C";
+    }, 1000)
 }
 
-mobileBtns.iFreq.addEventListener("click", () => {
-    mobileBtns.iFreq.style.color = "#479787"
-    window.setTimeout(() => {
-        mobileBtns.iFreq.style.color = "#2A6A5C";
-    }, 1000)
-    lastFrequency = (Number(lastFrequency) + 0.01).toFixed(2);
-    codecFrequency.textContent = (lastFrequency);
-    SOUND_EFFECTS[3].play();
-})
-
-
-mainInfoScroller.addEventListener("click", function() {
-    if (cMainInfo_LVL > 2) {
-        cMainInfo_LVL = 0;
+songNavigateEl.addEventListener("click", function() {
+    if (infoLvl > 2) {
+        infoLvl = 0;
     } else {
-        cMainInfo_LVL += 1;
+        infoLvl += 1;
     }
     
-    mainInfoBox.innerHTML = mainInfos[cMainInfo_LVL];
-    document.getElementById("main-infoscroll-n").innerHTML = `${cMainInfo_LVL + 1}`;
+    songInfoEl.innerHTML = info[infoLvl];
+    document.getElementById("main-infoscroll-n").innerHTML = `${infoLvl + 1}`;
 });
 
-document.addEventListener("onclick", () => {
+document.addEventListener("click", () => {
     SOUND_EFFECTS[0].play();
     window.setTimeout(() => {
         SOUND_EFFECTS[4].play();
