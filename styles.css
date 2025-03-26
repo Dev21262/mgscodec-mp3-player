@@ -6,37 +6,30 @@
 }
 
 html {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 body {
     /* Do not forget about this*/
+    padding: 2rem;
     color: #CCD0CF;
-    min-height: 100vh;
-    line-height: 1.5rem;
-    padding: 2rem 1.5rem;
-    font-family: 'Raleway';
-    font-weight: 500;
-    filter: blur(200px);
-    transform: scale(1, 0);
+    line-height: 1.25;
+    min-height: 100dvh;
     background-size: cover;
-    animation: cubic-bezier(0, 0.35, 0.8, 1) codecopen 1s;
-    animation-fill-mode: forwards;
+    font-family: 'mgsv-m', sans-serif;
     background-image: url("images/codec-background.png");
+    /* filter: blur(200px); */
+    /* transform: scale(1, 0); */
+    /* animation: cubic-bezier(0, 0.35, 0.8, 1) codecopen 1s; */
+    /* animation-fill-mode: forwards; */
 }
 
 #codec {
-    /* width: 70%; */
     color: #2A6A5C;
-    max-width: 650px;
+    max-width: 600px;
     position: relative;
     padding: 0rem 2rem 4rem 2rem;
-    background: transparent;
     border: 0.09rem solid #61968C;
-}
-
-#increase-freq-btn:hover{ 
-    cursor: pointer;
 }
 
 #codec::after {
@@ -47,11 +40,10 @@ body {
     height: 100%;
     content: " ";
     position: absolute;
-    /* background: rgba(91, 107, 78, 0.05); */
-    background: rgba(15, 24, 22, 0.2);
+    background: rgba(15, 24, 22, 0.15);
 }
 
-#codec-dialerbox {
+#codec-dialer {
     left: 0;
     bottom: 0;
     width: 100%;
@@ -65,35 +57,15 @@ body {
     border-top: 0.09rem solid #61968C;
 }
 
-.triangle-down {
-    font-size: 3rem;
-    pointer-events: auto;
-    color: #2A6A5C;
-
-}
-
-.triangle-left {
-    border: none;
-    font-size: 2.8rem;
-    color: #2A6A5C;
-    background: transparent;
-
-}
-
-.triangle-right {
-    border: none;
-    font-size: 2.8rem;
-    color: #2A6A5C;
-    background: transparent;
-
-}
-
-.triangle-left:hover {
+.pointer-hover:hover {
     cursor: pointer;
-    color: #479787;      
 }
 
-.triangle-right:hover {
+.triangle-btn {
+    font-size: 2.8rem;
+}
+
+.triangle-btn:hover {
     cursor: pointer;
     color: #479787;      
 }
@@ -105,8 +77,13 @@ body {
 }
 
 .mgsv-font {
-    font-family: 'MGSV-m';
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.05rem;
+    font-family: 'mgsv-m', sans-serif;
+}
+
+.mgsv-font.light {
+    letter-spacing: 0.05rem;
+    font-family: 'mgsv-l', sans-serif;
 }
 
 .ptt-font {
@@ -119,7 +96,6 @@ body {
     letter-spacing: 0.25rem;
 }
 
-/*330 95 70*/
 
 .codec-gun {
     height: 10px;
@@ -147,7 +123,7 @@ body {
     background-blend-mode: color-dodge;
 }
 
-.codec-gun.two.n2::after {
+.codec-gun.two.n2::before {
     width: 0;
     height: 0;
     content: "";
@@ -165,36 +141,36 @@ body {
     height: 0;
     content: "";
     position: absolute;
-    border-top: 6px solid transparent;
-    border-left: 6px solid transparent;
-    border-bottom: 10px solid #133936;
+    border-top: 7px solid transparent;
+    border-left: 7px solid transparent;
+    border-bottom: 4px solid #133936;
     border-right: 4px solid #133936;
 }
 
 .codec-gun.two {
-    width: 55%;
+    width: 65%;
 }
 
 .codec-gun.three {
-    width: 50%;
+    width: 60%;
 }
 
 .codec-gun.four {
-    width: 45%;
+    width: 55%;
 }
 
 .codec-gun.five {
-    width: 40%;
+    width: 50%;
 }
 
 .codec-gun.six {
-    width: 30%;
+    width: 40%;
 }
 
 .codec-gun.six::after {
     right: 0;
     bottom: 0;
-    width: 35%;
+    width: 30%;
     height: 60%;
     content: " ";
     position: absolute;
@@ -214,6 +190,7 @@ body {
     max-width: 250px;
     aspect-ratio: 4/5;
     padding: 0.15rem;
+    justify-self: center;
     margin-right: 0.5rem;
     max-height: fit-content;
     border: 0.09rem solid #61968C;
@@ -227,11 +204,11 @@ body {
 }
 
 .song-details {
-    font-weight: 500;
+    max-width: 850px;
     position: relative;
     font-size: 0.9rem;
-    margin-right: 0.5rem;
-    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
     background-size: cover;
     padding: 2rem 2rem 3rem 2rem;
     border-top: 0.15rem solid #61968C;
@@ -245,18 +222,17 @@ body {
 .song-details p.icon {
     right: 0;
     bottom: 0;
-    font-size: 2rem;
-    font-weight: 400; 
+    font-weight: 00; 
     position: absolute;
     margin-right: 1rem;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.5em;
+    margin-bottom: 0.75em;
 }
 
 .song-details span.icon {
     right: 0;
     bottom: 0;
-    font-size: 2rem;
+    font-size: 1.5em;
     color: #61968C;
     font-weight: 400;
     margin-right: 1rem;
@@ -272,25 +248,22 @@ body {
     display: flex;
 }
 
-.flex-box2 {
-    display: flex;
-    justify-content: space-between;
-}
-
 .grid-box1 {
     display: grid;
-    grid-gap: 0px;
+    grid-gap: 5px;
     align-items: center;
     justify-content: center;
-    /* background-color: #D43031; */
-    grid-template-columns: 250px 1fr;
+    /* background-color: rgba(212, 48, 49, 0.1); */
+    grid-template-columns: 250px minmax(400px, 600px);
+    grid-template-columns: minmax(100px, 250px) minmax(400px, 600px);
+
 }
 
 
 .accept-call {
     color: #0E3835;
     font-weight: 800;
-    font-size: 0.8rem;
+    font-size: 0.8em;
     padding: 0.65em 1.5em;
     background: #31DD8A;
 }
@@ -298,7 +271,7 @@ body {
 .optional-call {
     color: #0E3835;
     font-weight: 800;
-    font-size: 0.8rem;
+    font-size: 0.8em;
     padding: 0.65em 1.5em;
     background: #85CDCF;
 }
@@ -306,7 +279,7 @@ body {
 .reject-call {
     color: #0E3835;
     font-weight: 800;
-    font-size: 0.8rem;
+    font-size: 0.8em;
     background: #D43031;
     padding: 0.65em 1.5em;
 }
@@ -315,8 +288,8 @@ body {
     font-size: 0.9em;
 }
 
-.small15-font {
-    font-size: 1rem;
+.small10-font {
+    font-size: 1em;
 }
 
 .med-font {
@@ -336,6 +309,10 @@ body {
     margin-top: 0.25rem
 }
 
+.mtp035 {
+    margin-top: 0.35rem;
+}
+
 .mtp05 {
     margin-top: 0.5rem;
 }
@@ -353,7 +330,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
-.record-freq {
+.song-freqrecord {
     display: flex;
     padding-bottom: 1rem;
     position: relative;
@@ -370,7 +347,7 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
-    background: rgba(14, 20, 19, 0.5);
+    background: rgba(14, 20, 19, 0.35);
 }
 
 @keyframes codecopen {
@@ -386,6 +363,11 @@ body {
 
     80% {
         filter: blur(100px);
+        transform: scale(1, 0.5);
+    }
+
+    90% {
+        filter: blur(70px);
         transform: scale(1, 0.5);
     }
     
@@ -412,7 +394,7 @@ body {
 
 @font-face {
     font-family: 'MGSV-m';
-    src: url('fonts/MGSV-medic.ttf');
+    src: url('fonts/MGSV-medic.otf');
 }
 
 @font-face {
@@ -421,7 +403,7 @@ body {
 }
 
 @media (max-width: 1000px) {
-    html { font-size: 1.2rem; }
+    html { font-size: 1.05rem; }
 }
 
 @media (max-width: 900px) {
@@ -429,33 +411,32 @@ body {
 }
 
 @media (max-width: 700px) {
-    html { font-size: 0.95rem; }
-
-    .song-details {
-        border-top: 0.15rem solid #61968C;
-    }
-
-    .song-image {
-        border: 0.125rem solid #61968C;
-    }
-
-    #codec {
-        border: 0.125rem solid #61968C;
-    }
+    html { font-size: 0.9rem; }
 
     .grid-box1 {
         grid-template-columns: 3fr 7fr;
     }
 }
 
-@media (max-width: 500px) {
-    html { font-size: 0.9rem; }
+@media (max-width: 550px) {
+    .grid-box1 {
+        grid-template-columns: 1fr; 
+        justify-content: center;
+    }
+    
+    .song-image {
+        max-width: 180px;
+    }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     html { font-size: 0.85rem; }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 400px) {
     html { font-size: 0.8rem; }
+}
+
+@media (max-width: 350px) {
+    html { font-size: 0.7rem; }
 }
