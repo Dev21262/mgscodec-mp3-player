@@ -53,11 +53,11 @@ function changeFreq(input) {
     
     if (input === '+') {
         changeFreqBtnsEl.iFreq.style.color = "#479787"
-        lastFrequency = (Number(lastFrequency) - 0.01).toFixed(2);
+        lastFrequency = (Number(lastFrequency) + 0.01).toFixed(2);
         codecFrequencyEl.textContent = (lastFrequency);
     } else if (input === '-') {
         changeFreqBtnsEl.dFreq.style.color = "#479787"
-        lastFrequency = (Number(lastFrequency) + 0.01).toFixed(2);
+        lastFrequency = (Number(lastFrequency) - 0.01).toFixed(2);
         codecFrequencyEl.textContent = lastFrequency;
     }
 }
