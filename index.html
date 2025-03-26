@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODEC MP3</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon" />
+    <link href="./styles.css" rel="stylesheet"/>
+</head>
+<body>
+    <audio id="soundeffect-open" src="./sounds/codecopen.wav"></audio>
+    <audio id="soundeffect-codeccall" src="./sounds/codeccall.wav"></audio>
+    <audio id="soundeffect-codecover" src="./sounds/codecover.wav"></audio>
+    <audio id="soundeffect-changeFreq" src="./sounds/codecchangefreq.mp3"></audio>
+    <audio id="soundeffect-itemused" src="./sounds/itemused.wav"></audio>
+
+
+    <h2 class="codec-font">CODEC MP3</h2><br/>
+        <div class="grid-box1">
+            <div class="song-image">
+                <img src="images/Snake Eater.png"/>
+            </div>
+            <div id="codec">
+                <h2 class="ptt-font big-font" id="PTT">PTT</h2><br/>
+                <main class="codec-gun one mtp10"></main>
+                <main class="codec-gun one n2 second-one mtp025"></main>
+                <div class="flex-box">
+                    <div style="width: 55%;">
+                        <main class="codec-gun two n2 mtp025"></main>
+                        <main class="codec-gun three n2 mtp025"></main>
+                        <main class="codec-gun four n2 mtp025"></main>
+                        <main class="codec-gun five mtp025"></main>
+                        <main class="codec-gun five mtp025"></main>
+                        <main class="codec-gun five mtp025"></main>
+                        <main class="codec-gun six mtp025"></main>
+                    </div>
+                    <div style="width: 60%; margin-bottom: 4rem; margin-right: 1rem;  display: flex; align-items: center;">
+                        <h2 class="ptt-font turquoise ls-05 big-font" id="codec-frequency">140.85</h2>
+                    </div>
+                </div>
+                <div id="codec-dialerbox">
+                    <div class="flex-box" style="margin-top: 1.5em; height: 50px;">
+                        <span style="margin-top: 0.25rem;" class="triangle-down material-symbols-sharp" id="mem-btn">arrow_drop_down</span>
+                        <h3 class="ptt-font">MEM.</h3>
+                    </div>
+                    <div class="flex-box" style="margin-top: 1.5em; height: 50px;">
+                        <button style="margin-top: 0.25rem;" class="triangle-left material-symbols-sharp" id="decrease-freq-btn">arrow_left</button>
+                        <h3 class="ptt-font">TUNE</h3>
+                        <button style="margin-top: 0.25rem;" class="triangle-right material-symbols-sharp" id="increase-freq-btn">arrow_right</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="song-details">
+            <div id="main-info">
+                <p class="mtp05"> <span class='codec-font accept-call'>NAME</span> <span class="mgsv-font med-font mlp05">Snake Eater</span></p>
+                <p class="mtp075"> <span class='codec-font accept-call'>FREQ</span> <span class="small15-font codec-font mlp05">140.85</span></p>
+                <p class="mtp075"> <span class='codec-font optional-call'>GAME</span> <span class="mgsv-font med-font mlp05">MGS3: Snake Eater</span></p>
+                <p class="mtp075"> <span class='codec-font optional-call'>GENRE</span> <span class="med-font mgsv-font mlp05">Jazz, Soul, Orchestral Pop</span></p>    
+            </div>
+            <p class="icon"><span id="main-infoscroll-n">1</span> / 4 <span class="icon" id="main-infoscroll-btn">></span></p>
+        </div>
+    <script src="./script.js" type="module"></script>
+</body>
+</html>
+
