@@ -5,8 +5,9 @@ const changeFreqBtnsEl = {
     dFreq: document.getElementById("decrease-freq-btn"),
     iFreq: document.getElementById("increase-freq-btn")
 }
-const songInfoEl = document.getElementById("main-info");
-const songNavigateEl = document.querySelector("#main-infoscroll-btn");
+const songInfoEl = document.getElementById("song-info");
+const songImageEl = document.getElementById("song-image");
+const songNavigateEl = document.querySelector("#song-infoscroll-btn");
 const SOUND_EFFECTS = [
     document.getElementById("soundeffect-open"),
     document.getElementById("soundeffect-codeccall"),
@@ -74,7 +75,23 @@ window.addEventListener("keydown", (e) => {
         document.querySelector('#PTT').style.color = "#96F3F1";
         window.setTimeout(() => {
             document.querySelector('#PTT').style.color = "#2A6A5C";
-        }, 1000)
+            songs.forEach((obj) => {
+                if (lastFrequency == obj._freq) {
+                    const mp3 = new Audio(obj._songpath);
+                    mp3.play();
+                    
+                    
+                    songImageEl.src = obj._coverart;
+                    info[0] = `
+                        <p class="mtp05"> <span class='codec-font accept-call'>NAME</span> <span class="mgsv-font med-font mlp05">${obj._name}</span></p>
+                        <p class="mtp075"> <span class='codec-font accept-call'>FREQ</span> <span class="small15-font codec-font mlp05">${obj._freq}</span></p>
+                        <p class="mtp075"> <span class='codec-font optional-call'>GAME</span> <span class="mgsv-font med-font mlp05">${obj._game}</span></p>
+                        <p class="mtp075"> <span class='codec-font optional-call'>GENRE</span> <span class="med-font mgsv-font mlp05">${obj._genre}</span></p>          
+                    `;
+                    songInfoEl.innerHTML = info[infoLvl];
+                }
+            })
+        }, 1100);
     }
 
 });
@@ -104,13 +121,13 @@ songNavigateEl.addEventListener("click", function() {
     }
     
     songInfoEl.innerHTML = info[infoLvl];
-    document.getElementById("main-infoscroll-n").innerHTML = `${infoLvl + 1}`;
+    document.getElementById("song-infoscroll-n").innerHTML = `${infoLvl + 1}`;
 });
 
 document.addEventListener("click", () => {
-    SOUND_EFFECTS[0].play();
+    // SOUND_EFFECTS[0].play();
     window.setTimeout(() => {
-        SOUND_EFFECTS[4].play();
+        // SOUND_EFFECTS[4].play();
     }, 1000)
 }, {
     once: true,
