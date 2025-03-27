@@ -27,11 +27,34 @@ const songs = [
         _songpath: "./mp3/Opening Infiltration.mp3",
     },
     {
-
+        _freq: 140.82,
+        _timesplayed: 0,
+        _name: "Theme of Solid Snake Remix by David Keaveny",
+        _game: "MG2: Solid Snake",
+        _genre: "Synthwave, Orchestral-Electronic Hybrid",
+        _coverart: "./images/Theme of Solid Snake Remix by David Keaveny.png",
+        _songpath: "./mp3/Theme of Solid Snake Remix by David Keaveny.mp3",
     },
     {
-
+        _freq: 140.82,
+        _timesplayed: 0,
+        _name: "Theme of Solid Snake Remix by David Keaveny",
+        _game: "MG2: Solid Snake",
+        _genre: "Synthwave, Orchestral-Electronic Hybrid",
+        _coverart: "./images/Theme of Solid Snake Remix by David Keaveny.png",
+        _songpath: "./mp3/Theme of Solid Snake Remix by David Keaveny.mp3",
     },
+    {
+        _freq: 140.00,
+        _timesplayed: 0,
+        _name: "Zanzibar Breeze (The Encounter Remix)",
+        _game: "MG2: Solid Snake",
+        _genre: "Synthwave, Orchestral-Electronic Hybrid",
+        _coverart: "./images/Zanzibar Breeze (The Encounter Remix).png",
+        _songpath: "./mp3/Zanzibar Breeze (The Encounter Remix).mp3",
+
+        
+    }
     
 ];
 
