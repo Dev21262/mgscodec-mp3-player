@@ -46,7 +46,7 @@ let info = [
     `,
 
 ];
-let lastFrequency = 140.85;
+let lastFrequency = 141.85;
 let infoLvl = 0;
 
 function changeFreq(input) {
@@ -55,13 +55,14 @@ function changeFreq(input) {
     if (input === '+') {
         changeFreqBtnsEl.iFreq.style.color = "#479787"
         lastFrequency = (Number(lastFrequency) + 0.01).toFixed(2);
-        codecFrequencyEl.textContent = (lastFrequency);
     } else if (input === '-') {
         changeFreqBtnsEl.dFreq.style.color = "#479787"
         lastFrequency = (Number(lastFrequency) - 0.01).toFixed(2);
-        codecFrequencyEl.textContent = lastFrequency;
     }
+    codecFrequencyEl.textContent = lastFrequency.toString();
 }
+
+changeFreq();
 
 window.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft") {
