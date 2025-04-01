@@ -46,7 +46,7 @@ let info = [
     `,
 
 ];
-let lastFrequency = 141.85;
+let lastFrequency = 145.99;
 let infoLvl = 0;
 
 function changeFreq(input) {
