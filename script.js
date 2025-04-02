@@ -1,4 +1,5 @@
-import songs from "./config.js";
+import { songs, data } from "./config.js";
+import updateStorage from "./update.js";
 
 const codecFrequencyEl = document.querySelector("#codec-frequency");
 const changeFreqBtnsEl = {
@@ -17,39 +18,40 @@ const SOUND_EFFECTS = [
     document.getElementById("soundeffect-itemused"),
 ];
 
+let infoLvl = 0;
+let mutData = data; 
+let lastFrequency = 140.85;
 let info = [
     `
-        <p class="mtp05"> <span class='codec-font accept-call'>NAME</span> <span class="mgsv-font med-font mlp05">Snake Eater</span></p>
+    <p class="mtp05"> <span class='codec-font accept-call'>NAME</span> <span class="mgsv-font med-font mlp05">Snake Eater</span></p>
         <p class="mtp075"> <span class='codec-font accept-call'>FREQ</span> <span class="small15-font codec-font mlp05">140.85</span></p>
         <p class="mtp075"> <span class='codec-font optional-call'>GAME</span> <span class="mgsv-font med-font mlp05">MGS3: Snake Eater</span></p>
         <p class="mtp075"> <span class='codec-font optional-call'>GENRE</span> <span class="med-font mgsv-font mlp05">Jazz, Soul, Orchestral Pop</span></p>       
-    `,
+        `,
     `
        <div class='black-filter'></div>
        <div class="song-freqrecord">
-            <p class="ptt-font med-font">${songs[0]._freq} <span class="turquoise mgsv-font">${songs[0]._name}</span></p>
-            <p class="ptt-font med-font"> ${songs[1]._freq} <span class="turquoise mgsv-font">${songs[1]._name}</span></p>
+            <p class="ptt-font med-font">${mutData[0][1]} <span class="turquoise mgsv-font">${mutData[0][0]}</span></p>
        </div>
-       <div class="song-freqrecord">
-           <p class="ptt-font med-font">${songs[0]._freq} <span class="turquoise mgsv-font">${songs[0]._name}</span></p>
-            <p class="ptt-font med-font"> ${songs[1]._freq} <span class="turquoise mgsv-font">${songs[1]._name}</span></p>
+        <div class="song-freqrecord">
+            <p class="ptt-font med-font"> ${mutData[1][1]} <span class="turquoise mgsv-font">${mutData[1][0]}</span></p>
         </div>
        <div class="song-freqrecord">
-            <p class="ptt-font med-font">${songs[0]._freq} <span class="turquoise mgsv-font">${songs[0]._name}</span></p>
-            <p class="ptt-font med-font"> ${songs[1]._freq} <span class="turquoise mgsv-font">${songs[1]._name}</span></p>
+                <p class="ptt-font med-font">${mutData[2][1]} <span class="turquoise mgsv-font">${mutData[2][0]}</span></p>
+        </diV>       
+        <div class="song-freqrecord">
+            <p class="ptt-font med-font"> ${mutData[3][1]} <span class="turquoise mgsv-font">${mutData[3][0]}</span></p>
        </div>
        <div class="song-freqrecord">
-            <p class="ptt-font med-font">${songs[0]._freq} <span class="turquoise mgsv-font">${songs[0]._name}</span></p>
-            <p class="ptt-font med-font"> ${songs[1]._freq} <span class="turquoise mgsv-font">${songs[1]._name}</span></p>
+            <p class="ptt-font med-font">${mutData[4][1]} <span class="turquoise mgsv-font">${mutData[4][0]}</span></p>
        </div>
-    `,
+
+       `,
     `
     `,
 
 ];
 
-let lastFrequency = 140.85;
-let infoLvl = 0;
 
 function changeFreq(input) {
     SOUND_EFFECTS[3].play();
@@ -66,23 +68,35 @@ function changeFreq(input) {
 
 let playMP3 = () => {
     SOUND_EFFECTS[1].play();
+
     document.querySelector('#PTT').style.color = "#96F3F1";
     window.setTimeout(() => {
         document.querySelector('#PTT').style.color = "#2A6A5C";
+
         songs.forEach((obj) => {
             if (lastFrequency == obj._freq) {
-                const mp3 = new Audio(obj._songpath);
-                mp3.play();
+                //arr's structure [name, frequency, timesPlayed];
+                for (let arr of mutData) {
+                    if (arr[0] === obj._name) {
+                        arr[2] += 1; 
+                        updateStorage(mutData)
+                    }
+
+                    mutData = mutData.sort((arr1, arr2) => {
+                        return arr2[2] - arr1[2];
+                        //arr's structure [name, frequency, timesPlayed];
+                    });
+                }
                 
-                
+                songInfoEl.innerHTML = info[infoLvl];
                 songImageEl.src = obj._coverart;
                 info[0] = `
                     <p class="mtp05"> <span class='codec-font accept-call'>NAME</span> <span class="mgsv-font med-font mlp05">${obj._name}</span></p>
                     <p class="mtp075"> <span class='codec-font accept-call'>FREQ</span> <span class="small15-font codec-font mlp05">${obj._freq}</span></p>
                     <p class="mtp075"> <span class='codec-font optional-call'>GAME</span> <span class="mgsv-font med-font mlp05">${obj._game}</span></p>
-                    <p class="mtp075"> <span class='codec-font optional-call'>GENRE</span> <span class="med-font mgsv-font mlp05">${obj._genre}</span></p>          
-                `;
-                songInfoEl.innerHTML = info[infoLvl];
+                    <p class="mtp075"> <span class='codec-font optional-call'>GENRE</span> <span class="med-font mgsv-font mlp05">${obj._genre}</span></p>`;
+                const mp3 = new Audio(obj._songpath);
+                mp3.play();
             }
         })
     }, 1100);

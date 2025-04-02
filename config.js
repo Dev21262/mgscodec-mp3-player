@@ -1,4 +1,4 @@
-const songs = [
+let songs = [
     {
         _freq: 140.85,
         _timesplayed: 0,
@@ -67,13 +67,13 @@ const songs = [
         
     },
     {
-        _freq: 141.85,
+        _freq: 140.01,
         _timesplayed: 0,
-        _name: "Snake Eater (Abstracted Camo Ver)",
+        _name: "Snake Eater (Japanese Ver)",
         _game: "MGS3: Snake Eater",
         _genre: "Synthwave, Orchestral-Electronic Hybrid",
-        _coverart: "./images/Snake Eater (Abstracted Camo Ver).png",
-        _songpath: "./mp3/MGS3/Snake Eater (Abstracted Camo Ver).mp3",        
+        _coverart: "./images/Snake Eater (Japanese Ver).png",
+        _songpath: "./mp3/MGS3/Snake Eater (Japanese Ver).mp3",        
     },
     {
         _freq: 145.73,
@@ -175,7 +175,7 @@ const songs = [
         _songpath: "./mp3/MGSV/Nuclear.mp3",
     },
     {
-        _freq: 145.97,
+        _freq: 141.12,
         _timesplayed: 0,
         _name: "V Has Come to",
         _game: "MGSV: The Phantom Pain",
@@ -184,7 +184,7 @@ const songs = [
         _songpath: "./mp3/MGSV/V Has Come to.mp3",
     },
     {
-        _freq: 145.98,
+        _freq: 141.12,
         _timesplayed: 0,
         _name: "Here's to You",
         _game: "MGSV: Ground Zeroes",
@@ -193,7 +193,7 @@ const songs = [
         _songpath: "./mp3/MGSV/Here's to You.mp3",
     },
     {
-        _freq: 145.99,
+        _freq: 140.66,
         _timesplayed: 0,
         _name: "Quiets's Theme",
         _game: "MGSV: The Phantom Pain",
@@ -211,7 +211,7 @@ const songs = [
         _songpath: "./mp3/MGSV/Sins of the Father.mp3",
     },
     {
-        _freq: 146.01,
+        _freq: 140.15,
         _timesplayed: 0,
         _name: "Take On Me",
         _game: "MGSV: The Phantom Pain",
@@ -220,7 +220,7 @@ const songs = [
         _songpath: "./mp3/MGSV/Take On Me.mp3",
     },
     {
-        _freq: 146.02,
+        _freq: 145.85,
         _timesplayed: 0,
         _name: "The Final Countdown",
         _game: "MGSV: The Phantom Pain",
@@ -230,5 +230,54 @@ const songs = [
     }
     
 ];
+//148.93 -4,  
+/**
+ * 
+ * 144.17
+ 143.16
+ 145.66
+140.96
 
-export default songs;
+142.03
+ 144.09
+145.72
+143.42
+146.74
+ 140.89
+
+147.75
+ 141.46
+140.08
+144.21
+145.74
+
+
+146.29
+146.66 //ghostbabel
+
+
+143.15 Prisoner Evacuation
+140.02
+146.78
+
+
+//141.41 - sepcial
+ */
+songs = songs.sort((obj1, obj2) => {
+    return obj2._timesplayed - obj1._timesplayed;
+})
+
+let intialData = songs.map((obj) => {
+    return [obj._name, obj._freq, obj._timesplayed]
+})
+
+let data = JSON.parse(localStorage.getItem("CODECMP3_DATA")) || null;
+if (data === null) {
+    localStorage.setItem("CODECMP3_DATA", JSON.stringify(intialData));
+    data = localStorage.getItem("CODECMP3_DATA");
+} else {
+   console.log(data);
+}
+// localStorage.clear();
+
+export {songs, data};
