@@ -5,6 +5,7 @@ const changeFreqBtnsEl = {
     dFreq: document.getElementById("decrease-freq-btn"),
     iFreq: document.getElementById("increase-freq-btn")
 }
+const tuneBtnEl = document.getElementById("tune-btn");
 const songInfoEl = document.getElementById("song-info");
 const songImageEl = document.getElementById("song-image");
 const songNavigateEl = document.querySelector("#song-infoscroll-btn");
@@ -46,7 +47,8 @@ let info = [
     `,
 
 ];
-let lastFrequency = 145.99;
+
+let lastFrequency = 140.85;
 let infoLvl = 0;
 
 function changeFreq(input) {
@@ -62,40 +64,35 @@ function changeFreq(input) {
     codecFrequencyEl.textContent = lastFrequency.toString();
 }
 
-changeFreq();
+let playMP3 = () => {
+    SOUND_EFFECTS[1].play();
+    document.querySelector('#PTT').style.color = "#96F3F1";
+    window.setTimeout(() => {
+        document.querySelector('#PTT').style.color = "#2A6A5C";
+        songs.forEach((obj) => {
+            if (lastFrequency == obj._freq) {
+                const mp3 = new Audio(obj._songpath);
+                mp3.play();
+                
+                
+                songImageEl.src = obj._coverart;
+                info[0] = `
+                    <p class="mtp05"> <span class='codec-font accept-call'>NAME</span> <span class="mgsv-font med-font mlp05">${obj._name}</span></p>
+                    <p class="mtp075"> <span class='codec-font accept-call'>FREQ</span> <span class="small15-font codec-font mlp05">${obj._freq}</span></p>
+                    <p class="mtp075"> <span class='codec-font optional-call'>GAME</span> <span class="mgsv-font med-font mlp05">${obj._game}</span></p>
+                    <p class="mtp075"> <span class='codec-font optional-call'>GENRE</span> <span class="med-font mgsv-font mlp05">${obj._genre}</span></p>          
+                `;
+                songInfoEl.innerHTML = info[infoLvl];
+            }
+        })
+    }, 1100);
+}
 
 window.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft") {
-        changeFreq('-');
-    } else if (e.key === "ArrowRight") {
-        changeFreq('+');
-    }
-
-    if (e.key === "Enter") {
-        SOUND_EFFECTS[1].play();
-        document.querySelector('#PTT').style.color = "#96F3F1";
-        window.setTimeout(() => {
-            document.querySelector('#PTT').style.color = "#2A6A5C";
-            songs.forEach((obj) => {
-                if (lastFrequency == obj._freq) {
-                    const mp3 = new Audio(obj._songpath);
-                    mp3.play();
-                    
-                    
-                    songImageEl.src = obj._coverart;
-                    info[0] = `
-                        <p class="mtp05"> <span class='codec-font accept-call'>NAME</span> <span class="mgsv-font med-font mlp05">${obj._name}</span></p>
-                        <p class="mtp075"> <span class='codec-font accept-call'>FREQ</span> <span class="small15-font codec-font mlp05">${obj._freq}</span></p>
-                        <p class="mtp075"> <span class='codec-font optional-call'>GAME</span> <span class="mgsv-font med-font mlp05">${obj._game}</span></p>
-                        <p class="mtp075"> <span class='codec-font optional-call'>GENRE</span> <span class="med-font mgsv-font mlp05">${obj._genre}</span></p>          
-                    `;
-                    songInfoEl.innerHTML = info[infoLvl];
-                }
-            })
-        }, 1100);
-    }
-
+    e.key === "ArrowLeft" ? changeFreq('-') : e.key === "ArrowRight" ? changeFreq('+') : null
+    e.key === "Enter" && playMP3()
 });
+
 window.addEventListener("keyup", (e) => {
     changeFreqBtnsEl.dFreq.style.color = "#2A6A5C";
     changeFreqBtnsEl.iFreq.style.color = "#2A6A5C";
@@ -113,6 +110,8 @@ changeFreqBtnsEl.dFreq.onclick = () => {
         changeFreqBtnsEl.dFreq.style.color = "#2A6A5C";
     }, 1000)
 }
+
+tuneBtnEl.onclick = () => playMP3() 
 
 songNavigateEl.addEventListener("click", function() {
     if (infoLvl > 2) {
