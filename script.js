@@ -20,7 +20,7 @@ const SOUND_EFFECTS = [
 
 let infoLvl = 0;
 let mutData = data; 
-let lastFrequency = 140.85;
+let lastFrequency = 142.00;
 let info = [
     `
     <p class="mtp05"> <span class='codec-font accept-call'>NAME</span> <span class="mgsv-font med-font mlp05">Snake Eater</span></p>
@@ -88,13 +88,13 @@ let playMP3 = () => {
                     });
                 }
                 
-                songInfoEl.innerHTML = info[infoLvl];
                 songImageEl.src = obj._coverart;
                 info[0] = `
-                    <p class="mtp05"> <span class='codec-font accept-call'>NAME</span> <span class="mgsv-font med-font mlp05">${obj._name}</span></p>
-                    <p class="mtp075"> <span class='codec-font accept-call'>FREQ</span> <span class="small15-font codec-font mlp05">${obj._freq}</span></p>
-                    <p class="mtp075"> <span class='codec-font optional-call'>GAME</span> <span class="mgsv-font med-font mlp05">${obj._game}</span></p>
-                    <p class="mtp075"> <span class='codec-font optional-call'>GENRE</span> <span class="med-font mgsv-font mlp05">${obj._genre}</span></p>`;
+                <p class="mtp05"> <span class='codec-font accept-call'>NAME</span> <span class="mgsv-font med-font mlp05">${obj._name}</span></p>
+                <p class="mtp075"> <span class='codec-font accept-call'>FREQ</span> <span class="small15-font codec-font mlp05">${obj._freq}</span></p>
+                <p class="mtp075"> <span class='codec-font optional-call'>GAME</span> <span class="mgsv-font med-font mlp05">${obj._game}</span></p>
+                <p class="mtp075"> <span class='codec-font optional-call'>GENRE</span> <span class="med-font mgsv-font mlp05">${obj._genre}</span></p>`;
+                songInfoEl.innerHTML = info[infoLvl];
                 const mp3 = new Audio(obj._songpath);
                 mp3.play();
             }

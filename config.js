@@ -184,7 +184,7 @@ let songs = [
         _songpath: "./mp3/MGSV/V Has Come to.mp3",
     },
     {
-        _freq: 141.12,
+        _freq: 141.15,
         _timesplayed: 0,
         _name: "Here's to You",
         _game: "MGSV: Ground Zeroes",
@@ -220,7 +220,7 @@ let songs = [
         _songpath: "./mp3/MGSV/Take On Me.mp3",
     },
     {
-        _freq: 145.85,
+        _freq: 143.85,
         _timesplayed: 0,
         _name: "The Final Countdown",
         _game: "MGSV: The Phantom Pain",
