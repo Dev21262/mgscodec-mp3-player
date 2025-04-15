@@ -6,7 +6,7 @@
 }
 
 html {
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 body {
@@ -98,6 +98,16 @@ body {
     font-family: 'CODEC';
     transform: scale(1, 1.2);
     letter-spacing: 0.25rem;
+}
+
+.song-progression {
+    width: 60%;
+    padding: 1.25rem 0rem;
+    margin-bottom: 2rem;
+    background: transparent;
+    border-left: 0.05rem solid #61968C;
+    border-right: 0.05rem solid #61968C;
+    /* justify-self: center; */
 }
 
 
@@ -283,7 +293,7 @@ body {
 .accept-call {
     color: #0E3835;
     font-weight: 800;
-    font-size: 0.8em;
+    font-size: 0.85em;
     padding: 0.65em 1.5em;
     background: #31DD8A;
 }
@@ -291,7 +301,7 @@ body {
 .optional-call {
     color: #0E3835;
     font-weight: 800;
-    font-size: 0.8em;
+    font-size: 0.85em;
     padding: 0.65em 1.5em;
     background: #85CDCF;
 }
@@ -299,7 +309,7 @@ body {
 .reject-call {
     color: #0E3835;
     font-weight: 800;
-    font-size: 0.8em;
+    font-size: 0.85em;
     background: #D43031;
     padding: 0.65em 1.5em;
 }
@@ -308,12 +318,12 @@ body {
     font-size: 0.9em;
 }
 
-.small10-font {
-    font-size: 1em;
+.small11-font {
+    font-size: 1.1em;
 }
 
 .med-font {
-    font-size: 1.3em;
+    font-size: 1.45em;
     /* font-weight: 500; */
 }
 
@@ -437,15 +447,15 @@ body {
 }
 
 @media (max-width: 1000px) {
-    html { font-size: 1.05rem; }
+    html { font-size: 0.95rem; }
 }
 
 @media (max-width: 900px) {
-    html { font-size: 1rem; }
+    html { font-size: 0.9rem; }
 }
 
 @media (max-width: 700px) {
-    html { font-size: 0.9rem; }
+    html { font-size: 0.85rem; }
 
     .grid-box1 {
         grid-template-columns: 3fr 7fr;
@@ -464,11 +474,11 @@ body {
 }
 
 @media (max-width: 500px) {
-    html { font-size: 0.85rem; }
+    html { font-size: 0.8rem; }
 }
 
 @media (max-width: 400px) {
-    html { font-size: 0.8rem; }
+    html { font-size: 0.75rem; }
 }
 
 @media (max-width: 350px) {
