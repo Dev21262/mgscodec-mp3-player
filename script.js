@@ -20,14 +20,13 @@ const SOUND_EFFECTS = [
 
 let infoLvl = 0;
 let mutData = data; 
-let lastFrequency = 142.00;
+let lastFrequency = 140.97;
 let info = [
     `
-    <p class="mtp05"> <span class='codec-font accept-call'>NAME</span> <span class="mgsv-font med-font mlp05">Snake Eater</span></p>
-        <p class="mtp075"> <span class='codec-font accept-call'>FREQ</span> <span class="small15-font codec-font mlp05">140.85</span></p>
+        <p class="mtp05"> <span class='codec-font accept-call'>NAME</span> <span class="mgsv-font med-font mlp05">Snake Eater</span></p>
+        <p class="mtp075"> <span class='codec-font accept-call'>FREQ</span> <span class="small11-font codec-font mlp05">140.85</span></p>
         <p class="mtp075"> <span class='codec-font optional-call'>GAME</span> <span class="mgsv-font med-font mlp05">MGS3: Snake Eater</span></p>
-        <p class="mtp075"> <span class='codec-font optional-call'>GENRE</span> <span class="med-font mgsv-font mlp05">Jazz, Soul, Orchestral Pop</span></p>       
-        `,
+    `,
     `
        <div class='black-filter'></div>
        <div class="song-freqrecord">
@@ -91,10 +90,32 @@ let playMP3 = () => {
                 songImageEl.src = obj._coverart;
                 info[0] = `
                 <p class="mtp05"> <span class='codec-font accept-call'>NAME</span> <span class="mgsv-font med-font mlp05">${obj._name}</span></p>
-                <p class="mtp075"> <span class='codec-font accept-call'>FREQ</span> <span class="small15-font codec-font mlp05">${obj._freq}</span></p>
+                <p class="mtp075"> <span class='codec-font accept-call'>FREQ</span> <span class="small11-font codec-font mlp05">${obj._freq}</span></p>
                 <p class="mtp075"> <span class='codec-font optional-call'>GAME</span> <span class="mgsv-font med-font mlp05">${obj._game}</span></p>
-                <p class="mtp075"> <span class='codec-font optional-call'>GENRE</span> <span class="med-font mgsv-font mlp05">${obj._genre}</span></p>`;
-                songInfoEl.innerHTML = info[infoLvl];
+                <br/>
+                `;
+                songInfoEl.innerHTML = "";
+                
+                const flexboxEl = document.createElement("div");
+                flexboxEl.classList.add("flex-box");
+
+                
+                const divEl = document.createElement("div");
+                divEl.classList.add("song-progression");
+                
+                const playoptionsContainerEl = document.createElement("div");
+              
+                const pauseEl = document.createElement("span");
+                const forwardEl = document.createElement("span");
+                const backEl = document.createElement("span");
+                
+                playoptionsContainerEl.append("")
+                flexboxEl.appendChild(divEl);
+
+                songInfoEl.appendChild(divEl);
+
+                songInfoEl.innerHTML += info[infoLvl];
+
                 const mp3 = new Audio(obj._songpath);
                 mp3.play();
             }
@@ -125,7 +146,7 @@ changeFreqBtnsEl.dFreq.onclick = () => {
     }, 1000)
 }
 
-tuneBtnEl.onclick = () => playMP3() 
+
 
 songNavigateEl.addEventListener("click", function() {
     if (infoLvl > 2) {
@@ -148,3 +169,13 @@ document.addEventListener("click", () => {
 });
 
 
+// const audioContext = new window.AudioContext();
+// const levelUP = audioContext.createMediaElementSource(SOUND_EFFECTS[4]);
+
+// // Create an oscillator (the sound source)
+// const oscillator = audioContext.createOscillator();
+// oscillator.frequency.setValueAtTime(440, audioContext.currentTime); // 440Hz (A note)
+// oscillator.connect(audioContext.destination);
+
+// tuneBtnEl.onclick = () => {oscillator.start();}
+tuneBtnEl.onclick = () => playMP3()
